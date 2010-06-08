@@ -8,20 +8,33 @@ namespace MemeController
 {
     public partial class Form1 : Form
     {
+        #region Member Variables
+
         private WanderMeme _wander;
-        private int _roomCounter;
-        
+        private int _roomCounter; 
+
+        #endregion
+
+        #region Delegates
+
         // This delegate enables asynchronous calls for setting
         // the text property on a TextBox control.
-        delegate void SetTextCallback(string text);
+        delegate void SetTextCallback(string text); 
 
+        #endregion
+
+        #region Constructors
 
         public Form1()
         {
             InitializeComponent();
 
             MarkAllRoomsUnoccupied();
-        }
+        } 
+
+        #endregion
+
+        #region Form Events
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
@@ -33,12 +46,29 @@ namespace MemeController
             _wander.OnMemeEventHasFired += _wander_OnMemeEventHasFired;
         }
 
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            btnLoad.Enabled = true;
+            btnStop.Enabled = false;
+
+            _wander.Stop();
+            SetText("Whew, time to rest!" + Environment.NewLine);
+        }
+
+        #endregion
+
+        #region Event Handlers
+
         void _wander_OnMemeEventHasFired(Meme meme, MemeEvent memeEvent)
         {
             string msg = meme.Name + " has fired." + Environment.NewLine;
             SetText(msg);
             ProcessRoom();
-        }
+        } 
+
+        #endregion
+
+        #region Private Members
 
         private void SetText(string text)
         {
@@ -133,15 +163,6 @@ namespace MemeController
             room.BackColor = Color.SkyBlue;
         }
 
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-            btnLoad.Enabled = true;
-            btnStop.Enabled = false;
-
-            _wander.Stop();
-            SetText("Whew, time to rest!" + Environment.NewLine);
-        }
-
         private void MarkAllRoomsUnoccupied()
         {
             MarkRoomEmpty(pRoom1);
@@ -154,6 +175,8 @@ namespace MemeController
             MarkRoomEmpty(pRoom8);
             MarkRoomEmpty(pRoom9);
             MarkRoomEmpty(pRoom10);
-        }
+        } 
+
+        #endregion
     }
 }
