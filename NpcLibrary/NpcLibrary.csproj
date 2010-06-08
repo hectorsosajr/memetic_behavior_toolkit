@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0C4574C2-20A6-41EA-B8BC-0802F515B522}</ProjectGuid>
+    <ProjectGuid>{9830E78E-CEA2-4A8A-A2FC-7FA0246F1D9B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CustomMemes</RootNamespace>
-    <AssemblyName>CustomMemes</AssemblyName>
+    <RootNamespace>NpcLibrary</RootNamespace>
+    <AssemblyName>NpcLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -37,8 +37,6 @@
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
-    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -47,7 +45,6 @@
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -59,14 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Npc.cs" />
+    <Compile Include="NpcEnums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WanderMeme.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MemeLibrary\MemeLibrary.csproj">
-      <Project>{5FE3B750-5294-49AC-8ABD-0FF6AEEE8E4B}</Project>
-      <Name>MemeLibrary</Name>
-    </ProjectReference>
+    <Compile Include="Sense.cs" />
+    <Compile Include="SenseManager.cs" />
+    <Compile Include="SensoryMessage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
