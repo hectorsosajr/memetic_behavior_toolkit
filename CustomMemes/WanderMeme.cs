@@ -16,6 +16,15 @@ namespace CustomMemes
 
         #endregion
 
+        #region Constructors
+
+        public WanderMeme()
+        {
+            Name = "Wandering Meme";
+        } 
+
+        #endregion
+
         #region Public Members
 
         public override void Restart()
@@ -23,7 +32,6 @@ namespace CustomMemes
             Priority = MemePriority.Low;
             PriorityLevel = 0;
             Flags = MemeFlags.Resume | MemeFlags.Repeat;
-            Name = "Wandering Meme";
 
             SetupEventGenerators();
         }

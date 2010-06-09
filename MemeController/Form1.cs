@@ -12,6 +12,7 @@ namespace MemeController
         #region Member Variables
 
         private WanderMeme _wander;
+        private ExhaustionMeme _exausted;
         private int _roomCounter;
         private Npc _testNpc;
 
@@ -42,11 +43,13 @@ namespace MemeController
 
             _testNpc = new Npc();
 
-            _wander = new WanderMeme {Name = "Wandering Meme"};
-
             LogToScreen("Adding Wander meme to NPC...");
 
+            _wander = new WanderMeme();
+            _exausted = new ExhaustionMeme();
+
             _testNpc.Memes.AddMeme(_wander);
+            _testNpc.Memes.AddMeme(_exausted);
         }
 
         #endregion
@@ -59,6 +62,7 @@ namespace MemeController
             btnLoad.Enabled = false;
 
             _wander.OnMemeEventHasFired += _wander_OnMemeEventHasFired;
+            _exausted.OnMemeEventHasFired += _exausted_OnMemeEventHasFired;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -101,6 +105,10 @@ namespace MemeController
             string msg = meme.Name + " has fired." + Environment.NewLine;
             SetText(msg);
             ProcessRoom();
+        }
+
+        void _exausted_OnMemeEventHasFired(Meme meme, MemeEvent memeEvent)
+        {
         }
 
         #endregion
