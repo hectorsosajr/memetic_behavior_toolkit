@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using CustomMemes;
 using MemeLibrary;
+using NpcLibrary;
 
 namespace MemeController
 {
@@ -11,7 +12,8 @@ namespace MemeController
         #region Member Variables
 
         private WanderMeme _wander;
-        private int _roomCounter; 
+        private int _roomCounter;
+        private Npc _testNpc;
 
         #endregion
 
@@ -19,7 +21,7 @@ namespace MemeController
 
         // This delegate enables asynchronous calls for setting
         // the text property on a TextBox control.
-        delegate void SetTextCallback(string text); 
+        private delegate void SetTextCallback(string text);
 
         #endregion
 
@@ -30,7 +32,23 @@ namespace MemeController
             InitializeComponent();
 
             MarkAllRoomsUnoccupied();
-        } 
+
+            LoadNpc();
+        }
+
+        private void LoadNpc()
+        {
+            string msg = "Creating NPC..." + Environment.NewLine;
+            SetText(msg);
+            _testNpc = new Npc();
+
+            _wander = new WanderMeme {Name = "Wandering Meme"};
+
+            msg = "Adding Wander meme to NPC..." + Environment.NewLine;
+            SetText(msg);
+
+            _testNpc.Memes.AddMeme(_wander);
+        }
 
         #endregion
 
@@ -38,17 +56,23 @@ namespace MemeController
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
+            btnStart.Enabled = true;
             btnLoad.Enabled = false;
-            btnStop.Enabled = true;
-
-            _wander = new WanderMeme();
 
             _wander.OnMemeEventHasFired += _wander_OnMemeEventHasFired;
         }
 
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            btnStart.Enabled = false;
+            btnStop.Enabled = true;
+
+            _wander.Start();
+        }
+
         private void btnStop_Click(object sender, EventArgs e)
         {
-            btnLoad.Enabled = true;
+            btnStart.Enabled = true;
             btnStop.Enabled = false;
 
             _wander.Stop();
@@ -59,12 +83,12 @@ namespace MemeController
 
         #region Event Handlers
 
-        void _wander_OnMemeEventHasFired(Meme meme, MemeEvent memeEvent)
+        private void _wander_OnMemeEventHasFired(Meme meme, MemeEvent memeEvent)
         {
             string msg = meme.Name + " has fired." + Environment.NewLine;
             SetText(msg);
             ProcessRoom();
-        } 
+        }
 
         #endregion
 
@@ -78,7 +102,7 @@ namespace MemeController
             if (this.txtLog.InvokeRequired)
             {
                 var d = new SetTextCallback(SetText);
-                Invoke(d, new object[] { text });
+                Invoke(d, new object[] {text});
             }
             else
             {
@@ -175,8 +199,9 @@ namespace MemeController
             MarkRoomEmpty(pRoom8);
             MarkRoomEmpty(pRoom9);
             MarkRoomEmpty(pRoom10);
-        } 
+        }
 
         #endregion
     }
 }
+    ;

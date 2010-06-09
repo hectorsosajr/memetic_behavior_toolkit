@@ -7,15 +7,16 @@ namespace CustomMemes
     {
         public event MemeEventHasFired OnMemeEventHasFired;
 
+        #region Member Variables
+
         private MemeEvent event1;
         private MemeEvent event2;
         private MemeEvent event3;
-        private MemeEvent event4;
+        private MemeEvent event4; 
 
-        public WanderMeme()
-        {
-            Start();
-        }
+        #endregion
+
+        #region Public Members
 
         public override void Start()
         {
@@ -35,11 +36,15 @@ namespace CustomMemes
             event4.OnTimerFired -= EventOnTimerFiredHandler;
 
             Events.Clear();
-        }
+        } 
+
+        #endregion
+
+        #region Private Members
 
         private void SetupEventGenerators()
         {
-            event1 = new MemeEvent(new TimeSpan(0,0,5), MemePriority.Medium, MemeEventType.Timed);
+            event1 = new MemeEvent(new TimeSpan(0, 0, 5), MemePriority.Medium, MemeEventType.Timed);
             event1.OnTimerFired += EventOnTimerFiredHandler;
             Events.Add(event1);
 
@@ -54,7 +59,11 @@ namespace CustomMemes
             event4 = new MemeEvent(new TimeSpan(0, 0, 20), MemePriority.Medium, MemeEventType.Timed);
             event4.OnTimerFired += EventOnTimerFiredHandler;
             Events.Add(event4);
-        }
+        } 
+
+        #endregion
+
+        #region Event Handlers
 
         void EventOnTimerFiredHandler(MemeEvent sender)
         {
@@ -62,6 +71,8 @@ namespace CustomMemes
             {
                 OnMemeEventHasFired(this, sender);
             }
-        }
+        } 
+
+        #endregion
     }
 }

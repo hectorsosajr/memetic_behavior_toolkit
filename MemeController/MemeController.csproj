@@ -88,6 +88,10 @@
       <Project>{5FE3B750-5294-49AC-8ABD-0FF6AEEE8E4B}</Project>
       <Name>MemeLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NpcLibrary\NpcLibrary.csproj">
+      <Project>{9830E78E-CEA2-4A8A-A2FC-7FA0246F1D9B}</Project>
+      <Name>NpcLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
