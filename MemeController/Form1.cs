@@ -38,14 +38,13 @@ namespace MemeController
 
         private void LoadNpc()
         {
-            string msg = "Creating NPC..." + Environment.NewLine;
-            SetText(msg);
+            LogToScreen("Creating NPC...");
+
             _testNpc = new Npc();
 
             _wander = new WanderMeme {Name = "Wandering Meme"};
 
-            msg = "Adding Wander meme to NPC..." + Environment.NewLine;
-            SetText(msg);
+            LogToScreen("Adding Wander meme to NPC...");
 
             _testNpc.Memes.AddMeme(_wander);
         }
@@ -67,13 +66,11 @@ namespace MemeController
             btnStart.Enabled = false;
             btnStop.Enabled = true;
 
-            string msg = "Firing up the memes in the NPC..." + Environment.NewLine;
-            SetText(msg);
+             LogToScreen("Firing up the memes in the NPC...");
 
             _testNpc.StartMemes();
 
-            msg = "Memes in the NPC have been started." + Environment.NewLine;
-            SetText(msg);
+             LogToScreen("Memes in the NPC have been started.");
 
             CreateSeparator();
         }
@@ -85,14 +82,12 @@ namespace MemeController
 
             CreateSeparator();
 
-            string msg = "Stopping the memes in the NPC..." + Environment.NewLine;
-            SetText(msg);
+             LogToScreen("Stopping the memes in the NPC...");
 
             _testNpc.StopMemes();
 
-            msg = "Memes in the NPC have been stopped." + Environment.NewLine;
-            SetText(msg);
-            SetText("Whew, time to rest!" + Environment.NewLine);
+             LogToScreen("Memes in the NPC have been stopped.");
+             LogToScreen("Whew, time to rest!");
 
             CreateSeparator();
         }
@@ -117,7 +112,7 @@ namespace MemeController
             // InvokeRequired required compares the thread ID of the
             // calling thread to the thread ID of the creating thread.
             // If these threads are different, it returns true.
-            if (this.txtLog.InvokeRequired)
+            if (txtLog.InvokeRequired)
             {
                 var d = new SetTextCallback(SetText);
                 Invoke(d, new object[] {text});
@@ -129,6 +124,12 @@ namespace MemeController
                 txtLog.SelectionLength = 0;
                 txtLog.ScrollToCaret();
             }
+        }
+
+        private void LogToScreen(string message)
+        {
+            string msg = message + Environment.NewLine;
+            SetText(msg);
         }
 
         private void CreateSeparator()
@@ -145,52 +146,52 @@ namespace MemeController
             {
                 case 1:
                     MarkRoomOccupied(pRoom1);
-                    SetText("Wandering over to room 1..." + Environment.NewLine);
+                    LogToScreen("Wandering over to room 1...");
                     MarkRoomEmpty(pRoom10);
                     break;
                 case 2:
                     MarkRoomOccupied(pRoom2);
-                    SetText("Wandering over to room 2..." + Environment.NewLine);
+                     LogToScreen("Wandering over to room 2...");
                     MarkRoomEmpty(pRoom1);
                     break;
                 case 3:
                     MarkRoomOccupied(pRoom3);
-                    SetText("Wandering over to room 3..." + Environment.NewLine);
+                    LogToScreen("Wandering over to room 3...");
                     MarkRoomEmpty(pRoom2);
                     break;
                 case 4:
                     MarkRoomOccupied(pRoom4);
-                    SetText("Wandering over to room 4..." + Environment.NewLine);
+                    LogToScreen("Wandering over to room 4...");
                     MarkRoomEmpty(pRoom3);
                     break;
                 case 5:
                     MarkRoomOccupied(pRoom5);
-                    SetText("Wandering over to room 5..." + Environment.NewLine);
+                    LogToScreen("Wandering over to room 5...");
                     MarkRoomEmpty(pRoom4);
                     break;
                 case 6:
                     MarkRoomOccupied(pRoom6);
-                    SetText("Wandering over to room 6..." + Environment.NewLine);
+                    LogToScreen("Wandering over to room 6...");
                     MarkRoomEmpty(pRoom5);
                     break;
                 case 7:
                     MarkRoomOccupied(pRoom7);
-                    SetText("Wandering over to room 7..." + Environment.NewLine);
+                    LogToScreen("Wandering over to room 7...");
                     MarkRoomEmpty(pRoom6);
                     break;
                 case 8:
                     MarkRoomOccupied(pRoom8);
-                    SetText("Wandering over to room 8..." + Environment.NewLine);
+                    LogToScreen("Wandering over to room 8...");
                     MarkRoomEmpty(pRoom7);
                     break;
                 case 9:
                     MarkRoomOccupied(pRoom9);
-                    SetText("Wandering over to room 9..." + Environment.NewLine);
+                    LogToScreen("Wandering over to room 9...");
                     MarkRoomEmpty(pRoom8);
                     break;
                 case 10:
                     MarkRoomOccupied(pRoom10);
-                    SetText("Wandering over to room 10..." + Environment.NewLine);
+                    LogToScreen("Wandering over to room 10...");
                     MarkRoomEmpty(pRoom9);
                     break;
             }
@@ -228,4 +229,3 @@ namespace MemeController
         #endregion
     }
 }
-    ;
