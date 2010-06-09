@@ -44,8 +44,9 @@ namespace MemeController
             _testNpc = new Npc();
 
             LogToScreen("Adding Wander meme to NPC...");
-
             _wander = new WanderMeme();
+
+            LogToScreen("Adding Exhaustion meme to NPC...");
             _exausted = new ExhaustionMeme();
 
             _testNpc.Memes.AddMeme(_wander);
