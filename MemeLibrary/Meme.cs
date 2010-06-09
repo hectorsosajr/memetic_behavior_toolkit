@@ -23,12 +23,6 @@ namespace MemeLibrary
 
         #endregion
 
-        #region Public Members
-
-        public virtual void Start() {}
-
-        #endregion
-
         #region Private Members
 
         private void Init()
@@ -96,8 +90,7 @@ namespace MemeLibrary
         }
 
         public virtual void Stop()
-        {
-        }
+        {}
 
         public event MemeEventHasFired MemeEventFired;
 

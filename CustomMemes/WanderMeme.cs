@@ -18,7 +18,7 @@ namespace CustomMemes
 
         #region Public Members
 
-        public override void Start()
+        public override void Restart()
         {
             Priority = MemePriority.Low;
             PriorityLevel = 0;
@@ -36,7 +36,7 @@ namespace CustomMemes
             event4.OnTimerFired -= EventOnTimerFiredHandler;
 
             Events.Clear();
-        } 
+        }
 
         #endregion
 

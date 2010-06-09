@@ -50,6 +50,22 @@ namespace NpcLibrary
             return senses.Contains(SensoryType.Sight) && senses[SensoryType.Sight].Enabled;
         }
 
+        public virtual void StopMemes()
+        {
+            foreach (var meme in Memes)
+            {
+                meme.Stop();
+            }
+        }
+
+        public virtual void StartMemes()
+        {
+            foreach (var meme in Memes)
+            {
+                meme.Restart();
+            }
+        }
+
         #endregion
 
         #region Private Members

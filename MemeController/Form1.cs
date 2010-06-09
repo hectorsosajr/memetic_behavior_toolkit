@@ -67,7 +67,15 @@ namespace MemeController
             btnStart.Enabled = false;
             btnStop.Enabled = true;
 
-            _wander.Start();
+            string msg = "Firing up the memes in the NPC..." + Environment.NewLine;
+            SetText(msg);
+
+            _testNpc.StartMemes();
+
+            msg = "Memes in the NPC have been started." + Environment.NewLine;
+            SetText(msg);
+
+            CreateSeparator();
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -75,8 +83,18 @@ namespace MemeController
             btnStart.Enabled = true;
             btnStop.Enabled = false;
 
-            _wander.Stop();
+            CreateSeparator();
+
+            string msg = "Stopping the memes in the NPC..." + Environment.NewLine;
+            SetText(msg);
+
+            _testNpc.StopMemes();
+
+            msg = "Memes in the NPC have been stopped." + Environment.NewLine;
+            SetText(msg);
             SetText("Whew, time to rest!" + Environment.NewLine);
+
+            CreateSeparator();
         }
 
         #endregion
@@ -111,6 +129,12 @@ namespace MemeController
                 txtLog.SelectionLength = 0;
                 txtLog.ScrollToCaret();
             }
+        }
+
+        private void CreateSeparator()
+        {
+            string msg = "=======================================" + Environment.NewLine;
+            SetText(msg);
         }
 
         private void ProcessRoom()
