@@ -61,7 +61,7 @@ namespace MemeLibrary
             throw new NotImplementedException();
         }
 
-        public event MemeEventHasFired MemeEventFired;
+        public event MemeEventHasFired OnMemeEventHasFired;
 
         #endregion
     }

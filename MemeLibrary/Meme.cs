@@ -69,7 +69,7 @@ namespace MemeLibrary
         public List<IMeme> ChildMemes { get; set; }
 
         /// <summary>
-        /// Holds a list of internal event generators that will fire throught
+        /// Holds a list of internal event generators that will fire through
         /// the meme's lifecycle.
         /// </summary>
         public List<MemeEvent> Events { get; set; }
@@ -92,7 +92,7 @@ namespace MemeLibrary
         public virtual void Stop()
         {}
 
-        public event MemeEventHasFired MemeEventFired;
+        public event MemeEventHasFired OnMemeEventHasFired;
 
         #endregion
     }

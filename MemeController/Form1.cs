@@ -42,15 +42,6 @@ namespace MemeController
             LogToScreen("Creating NPC...");
 
             _testNpc = new Npc();
-
-            LogToScreen("Adding Wander meme to NPC...");
-            _wander = new WanderMeme();
-
-            LogToScreen("Adding Exhaustion meme to NPC...");
-            _exausted = new ExhaustionMeme();
-
-            _testNpc.Memes.AddMeme(_wander);
-            _testNpc.Memes.AddMeme(_exausted);
         }
 
         #endregion
@@ -61,6 +52,15 @@ namespace MemeController
         {
             btnStart.Enabled = true;
             btnLoad.Enabled = false;
+
+            LogToScreen("Adding Wander meme to NPC...");
+            _wander = new WanderMeme();
+
+            LogToScreen("Adding Exhaustion meme to NPC...");
+            _exausted = new ExhaustionMeme();
+
+            _testNpc.Memes.AddMeme(_wander);
+            _testNpc.Memes.AddMeme(_exausted);
 
             _wander.OnMemeEventHasFired += _wander_OnMemeEventHasFired;
             _exausted.OnMemeEventHasFired += _exausted_OnMemeEventHasFired;

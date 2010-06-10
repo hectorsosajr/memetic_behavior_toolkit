@@ -82,7 +82,7 @@
 
     /// <summary>
     /// Mass of edible food contained on each food source (smallest size mass weight/2.2 in pounds)
-    /// Use the monster manual p. 5 for masses (use the smallest mass for convienience)
+    /// Use the monster manual p. 5 for masses (use the smallest mass for convenience)
     /// </summary>
     public enum BodyMass
     {
@@ -106,6 +106,9 @@
         /// MM 4000-32000 10,000 pounds (elephant)
         /// </summary>
         Huge,
+        /// <summary>
+        /// 200,000 pounds (blue whale)
+        /// </summary>
         Titanic
     }
 }
