@@ -69,4 +69,43 @@
         /// <summary>Provides tactile feedback to the touch sense.</summary>
         PoundsPerSquareInch
     }
+
+    /// <summary>
+    /// The type of diets that the npc will have.
+    /// </summary>
+    public enum Diet
+    {
+        Herbivore,
+        Carnivore,
+        Omnivore
+    }
+
+    /// <summary>
+    /// Mass of edible food contained on each food source (smallest size mass weight/2.2 in pounds)
+    /// Use the monster manual p. 5 for masses (use the smallest mass for convienience)
+    /// </summary>
+    public enum BodyMass
+    {
+        /// <summary>
+        /// MM 1-8 lb    50 gram    (large mouse)
+        /// </summary>
+        Tiny,
+        /// <summary>
+        /// MM 8-60       500 grams  (peregrine falcon)
+        /// </summary>
+        Small,
+        /// <summary>
+        /// MM 60-500     135 pounds avg (110 for wolf, 150 for deer)
+        /// </summary>
+        Medium,
+        /// <summary>
+        /// MM 500-4000   600 pounds (grizzly bear)
+        /// </summary>
+        Large,
+        /// <summary>
+        /// MM 4000-32000 10,000 pounds (elephant)
+        /// </summary>
+        Huge,
+        Titanic
+    }
 }
