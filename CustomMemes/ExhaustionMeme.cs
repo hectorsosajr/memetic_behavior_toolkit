@@ -4,7 +4,7 @@ namespace CustomMemes
 {
     public class ExhaustionMeme : Meme
     {
-        public event MemeEventHasFired OnMemeEventHasFired;
+        public new MemeEventHasFired OnMemeEventHasFired;
 
         #region Constructors
 
@@ -14,6 +14,8 @@ namespace CustomMemes
         }
 
         #endregion
+
+        #region Public Members
 
         public override void Restart()
         {
@@ -25,6 +27,8 @@ namespace CustomMemes
         public override void Stop()
         {
             Events.Clear();
-        }
+        } 
+
+        #endregion
     }
 }

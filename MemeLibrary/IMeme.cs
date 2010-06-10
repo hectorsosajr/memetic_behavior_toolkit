@@ -66,7 +66,7 @@ namespace MemeLibrary
 
         #region Events
 
-        event MemeEventHasFired MemeEventFired; 
+        event MemeEventHasFired OnMemeEventHasFired; 
 
         #endregion
     }

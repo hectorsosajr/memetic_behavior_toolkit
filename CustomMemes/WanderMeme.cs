@@ -5,7 +5,7 @@ namespace CustomMemes
 {
     public class WanderMeme : Meme
     {
-        public event MemeEventHasFired OnMemeEventHasFired;
+        public new MemeEventHasFired OnMemeEventHasFired;
 
         #region Member Variables
 
