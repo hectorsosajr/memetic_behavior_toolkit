@@ -62,8 +62,8 @@ namespace MemeController
             _testNpc.Memes.AddMeme(_wander);
             _testNpc.Memes.AddMeme(_exausted);
 
-            _wander.OnMemeEventHasFired += _wander_OnMemeEventHasFired;
-            _exausted.OnMemeEventHasFired += _exausted_OnMemeEventHasFired;
+            _wander.OnMemeEventHasFired += child_OnMemeEventHasFired;
+            _exausted.OnMemeEventHasFired += child_OnMemeEventHasFired;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -73,7 +73,7 @@ namespace MemeController
 
              LogToScreen("Firing up the memes in the NPC...");
 
-            _testNpc.StartMemes();
+             _testNpc.StartMemes();
 
              LogToScreen("Memes in the NPC have been started.");
 
@@ -101,15 +101,16 @@ namespace MemeController
 
         #region Event Handlers
 
-        private void _wander_OnMemeEventHasFired(Meme meme, MemeEvent memeEvent)
+        void child_OnMemeEventHasFired(Meme meme, MemeEvent memeEvent)
         {
             string msg = meme.Name + " has fired." + Environment.NewLine;
             SetText(msg);
-            ProcessRoom();
-        }
 
-        void _exausted_OnMemeEventHasFired(Meme meme, MemeEvent memeEvent)
-        {
+            TypeSwitch.Do(
+                meme, 
+                TypeSwitch.Case<WanderMeme>(ProcessRoom),
+                TypeSwitch.Case<ExhaustionMeme>(ProcessExhaustion)
+                );
         }
 
         #endregion
@@ -211,6 +212,10 @@ namespace MemeController
             }
         }
 
+        private void ProcessExhaustion()
+        {
+        }
+
         private void MarkRoomOccupied(Panel room)
         {
             room.BackColor = Color.Firebrick;
@@ -236,5 +241,56 @@ namespace MemeController
         }
 
         #endregion
+    }
+
+    static class TypeSwitch
+    {
+        public class CaseInfo
+        {
+            public bool IsDefault { get; set; }
+            public Type Target { get; set; }
+            public Action<object> Action { get; set; }
+        }
+
+        public static void Do(object source, params CaseInfo[] cases)
+        {
+            var type = source.GetType();
+
+            foreach (var entry in cases)
+            {
+                if (entry.IsDefault || type == entry.Target)
+                {
+                    entry.Action(source);
+                    break;
+                }
+            }
+        }
+
+        public static CaseInfo Case<T>(Action action)
+        {
+            return new CaseInfo()
+            {
+                Action = x => action(),
+                Target = typeof(T)
+            };
+        }
+
+        public static CaseInfo Case<T>(Action<T> action)
+        {
+            return new CaseInfo()
+            {
+                Action = (x) => action((T)x),
+                Target = typeof(T)
+            };
+        }
+
+        public static CaseInfo Default(Action action)
+        {
+            return new CaseInfo()
+            {
+                Action = x => action(),
+                IsDefault = true
+            };
+        }
     }
 }
