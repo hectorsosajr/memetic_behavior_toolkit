@@ -8,50 +8,68 @@ namespace MemeLibrary
     /// </summary>
     public interface IMeme
     {
+        #region Events
+
+        event MemeEventHasFired OnMemeEventHasFired;
+
+        #endregion
+
         #region Properties
 
         /// <summary>
-        /// The name for this meme.
+        /// Gets or sets the name for this meme.
         /// </summary>
         string Name { get; set; }
 
         /// <summary>
-        /// The Flags for this meme.
+        /// Gets or sets the Flags for this meme.
         /// </summary>
         MemeFlags Flags { get; set; }
 
         /// <summary>
-        /// The behavior priority for this meme.
+        /// Gets or sets the behavior priority for this meme.
         /// </summary>
         MemePriority Priority { get; set; }
 
         /// <summary>
+        /// Gets or sets the priority level for this meme.
+        /// </summary>
+        /// <remarks>
         /// Priorities are bands of values. The priority level defines
         /// where in the priority does this band fall. These are usually
         /// between -100 and 100.
-        /// </summary>
+        /// </remarks>
         int PriorityLevel { get; set; }
 
         /// <summary>
+        /// Gets or sets the list of child memes.
+        /// </summary>
+        /// <remarks>
         /// A meme can contain child memes. This contains a list of all the
         /// child memes.
-        /// </summary>
+        /// </remarks>
         List<IMeme> ChildMemes { get; set; }
 
         /// <summary>
-        /// Holds a list of internal event generators that will fire throught
+        /// Gets or sets a list of internal event generators that will fire throughout
         /// the meme's lifecycle.
         /// </summary>
         List<MemeEvent> Events { get; set; }
 
         /// <summary>
-        /// This helps in identifying memes, as two memes can have the same name.
+        /// Gets or sets the meme's time stamp.
         /// </summary>
+        /// <remarks>
+        /// This helps in identifying memes, as two memes can have the same name.
+        /// </remarks>
         DateTime TimeStamp { get; set; }
 
         /// <summary>
-        /// How long this meme will last. This is optional functionality.
+        /// Gets or sets the meme's duration.
         /// </summary>
+        /// <remarks>
+        /// How long this meme will last. This is optional functionality.
+        /// </remarks>
         TimeSpan Duration { get; set; }
 
         #endregion
@@ -61,12 +79,6 @@ namespace MemeLibrary
         void Restart();
 
         void Stop();
-
-        #endregion
-
-        #region Events
-
-        event MemeEventHasFired OnMemeEventHasFired; 
 
         #endregion
     }

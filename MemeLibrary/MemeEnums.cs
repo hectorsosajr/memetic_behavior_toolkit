@@ -19,7 +19,6 @@ namespace MemeLibrary
 
     /// <summary>
     /// Controls the behavior of the meme during its lifecycle.
-    /// 
     /// </summary>
     [Flags]
     public enum MemeFlags
@@ -28,14 +27,17 @@ namespace MemeLibrary
         /// Auto resume the behavior, if the meme is interrupted.
         /// </summary>
         Resume,
+
         /// <summary>
         /// Causes the meme to loop.
         /// </summary>
         Repeat,
+
         /// <summary>
         /// Do not create the behavior, if there are memes with higher priorities.
         /// </summary>
         Instant,
+
         /// <summary>
         /// Create the behavior, but do not interrupt the current one.
         /// </summary>
@@ -48,6 +50,7 @@ namespace MemeLibrary
         /// The meme is currently active and engaged.
         /// </summary>
         Active,
+
         /// <summary>
         /// The meme is waiting for other memes to finish, or
         /// is queued up to be next.
@@ -57,7 +60,14 @@ namespace MemeLibrary
 
     public enum MemeEventType
     {
+        /// <summary>
+        /// A time-based meme event
+        /// </summary>
         Timed,
+
+        /// <summary>
+        /// A signal based meme event
+        /// </summary>
         Signal
     }
 }
