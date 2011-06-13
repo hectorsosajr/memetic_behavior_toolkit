@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace MemeLibrary
 {
+    /// <summary>
+    /// A <see cref="Meme"/> that supports a <see cref="System.Collections.Generic.Queue">Queue</see>
+    /// also known as Last In First Out.
+    /// </summary>
     public class MemeLIFOSequence : Queue<Meme>, IMeme
     {
         #region Implementation of IMeme

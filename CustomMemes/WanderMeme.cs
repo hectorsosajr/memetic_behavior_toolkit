@@ -73,7 +73,7 @@ namespace CustomMemes
 
         #region Event Handlers
 
-        void EventOnTimerFiredHandler(MemeEvent sender)
+        private void EventOnTimerFiredHandler(MemeEvent sender)
         {
             if (OnMemeEventHasFired != null)
             {
